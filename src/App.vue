@@ -2,9 +2,9 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <h1>{{ title }}</h1>
-    <navbar :allPhotos="allPhotos" />
+    <navbar :allPhotosView="allPhotosView" />
     <div class="allPhotos">
-      <allPhotos :photos="photos"/>
+      <allPhotos :photos="photos" />
     </div>
   </div>
 </template>
@@ -30,7 +30,18 @@ export default {
   methods: {
     allPhotosView() {
       this.currentView = "allPhotos";
-    },  
+    },
+    async fetchAllPhotos() {
+      const arrayOfObjects = await listObjects();
+      let resolved = arrayOfObjects.map(obj => obj.Key);
+      let promiseOfKeys = resolved.map(async key => await getSingleObject(key));
+      Promise.all(promiseOfKeys).then(base64String => {
+        this.photos.push(base64String);
+      });
+    }
+  },
+  created() {
+    this.fetchAllPhotos();
   }
 };
 </script>

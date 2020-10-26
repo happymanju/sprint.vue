@@ -1,25 +1,19 @@
 <template>
   <div class="all-photos">
-    <p v-on:click="submitUploadFile()">All Photos</p>
+    <p v-on:click="allPhotosView()">All Photos</p>
     <upload />
   </div>
 </template>
 
 <script>
 import Upload from "./Upload";
-import { saveObject } from "../../utils/index";
 
 export default {
   name: "Navbar",
   components: {
     upload: Upload
   },
-  props: ["allPhotosView"],
-  methods:{
-    submitUploadFile = async file => {
-    await saveObject(file);
-    }
-  },
+  props: ["allPhotosView"]
 };
 </script>
 
