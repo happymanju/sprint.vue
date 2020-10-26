@@ -1,5 +1,7 @@
 <template>
-  <div />
+  <div v-for="photo in photos">
+    <img src="{{ photo }}" alt="Couldn't find" />
+  </div>
 </template>
 
 <script>
