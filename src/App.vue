@@ -3,16 +3,18 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <h1>{{ title }}</h1>
     <navbar :allPhotosView="allPhotosView" />
-
-    <div id="photoDisplayDiv" :key="currentView">
-      <div v-if="currentView === 'singlePhoto'">
-        <singlePhoto :selectedPhoto="selectedPhoto" />
-      </div>
-
-      <div v-else class="allPhotos">
-        <allPhotos :photos="photos" :selectedPhoto="selectedPhoto" />
-      </div>
+    <div v-show="!currentView">
+      <singlePhoto :selectedPhoto="selectedPhoto"/>
     </div>
+    <div v-show="currentView">
+      <allPhotos
+        :photos="photos"
+        :selectedPhoto="selectedPhoto"
+        :currentView="currentView"
+        @update-SelectedPhoto="updateSelectedPhoto"
+      />
+    </div>
+
   </div>
 </template>
 
@@ -31,13 +33,20 @@ export default {
   },
   data: () => ({
     title: "Photo Upload App",
-    currentView: "allPhotos",
+    currentView: true,
     photos: [],
     selectedPhoto: ""
   }),
   methods: {
     allPhotosView() {
-      this.currentView = "allPhotos";
+      this.currentView = true;
+    },
+    selectedPhotoCheck() {
+      console.log(this.selectedPhoto);
+    },
+    updateSelectedPhoto(photo) {
+      this.selectedPhoto = photo;
+      this.currentView = false;
     },
     async fetchAllPhotos() {
       const arrayOfObjects = await listObjects();

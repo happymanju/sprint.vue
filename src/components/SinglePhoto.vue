@@ -1,7 +1,7 @@
 <template>
   <div>
     <img
-      :src="`data:image/*;base64,${selectedphoto}`"
+      :src="`data:image/*;base64,${selectedPhoto}`"
       alt="Couldn't load image"
     />
   </div>

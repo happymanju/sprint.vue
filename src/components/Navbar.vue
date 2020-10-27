@@ -1,6 +1,6 @@
 <template>
   <div class="all-photos">
-    <p v-on:click="allPhotosView()">All Photos</p>
+    <button v-on:click="allPhotosView()">All Photos</button>
     <upload />
   </div>
 </template>

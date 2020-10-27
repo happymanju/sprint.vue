@@ -13,13 +13,13 @@
 <script>
 export default {
   name: "AllPhotos",
-  props: ["photos", "selectedPhoto"],
+  props: [
+    "photos",
+  ],
   methods: {
     selectPhoto(photo) {
-      this.selectedPhoto = photo;
-      this.currentView = "singlePhoto";
-      console.log(this.selectedPhoto);
-      console.log(this.currentView);
+      this.$emit("update-SelectedPhoto", photo);
+      console.log(photo);
     }
   }
 };
