@@ -4,7 +4,7 @@
     <h1>{{ title }}</h1>
     <navbar :allPhotosView="allPhotosView" />
 
-    <div id="Michael" :key="currentView">
+    <div id="photoDisplayDiv" :key="currentView">
       <div v-if="currentView === 'singlePhoto'">
         <singlePhoto :selectedPhoto="selectedPhoto" />
       </div>
