@@ -1,9 +1,9 @@
 <template>
   <div class="uploadContainer">
     <input type="file" ref="input" @change="submitUploadFile($event)" />
-    <!-- <button @click="() => submitUploadFile(this.ref.value)" type="submit">
+    <button @click="() => submitUploadFile(this.ref.value)" type="submit">
       Upload
-    </button> -->
+    </button>
   </div>
 </template>
 

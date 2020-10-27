@@ -3,9 +3,15 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <h1>{{ title }}</h1>
     <navbar :allPhotosView="allPhotosView" />
-    <div class="Photos">
-      <allPhotos v-bind:photos="photos" v-bind:selectedphoto="selectedphoto" />
-      <singlePhoto v-bind:photos="photos" />
+
+    <div id="Michael" :key="currentView">
+      <div v-if="currentView === 'singlePhoto'">
+        <singlePhoto :selectedPhoto="selectedPhoto" />
+      </div>
+
+      <div v-else class="allPhotos">
+        <allPhotos :photos="photos" :selectedPhoto="selectedPhoto" />
+      </div>
     </div>
   </div>
 </template>
